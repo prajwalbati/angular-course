@@ -1,8 +1,9 @@
-<div>
-  <ol>
-    <li ng-repeat="item in list.foundItems">
-      {{ item.quantity }} of {{ item.name }}
-      <button ng-click="list.onRemove({index: $index});">Remove Item</button>
+  <ul>
+    <li ng-repeat="item in list.items">
+      {{ item.name }} : {{ item.short_name}} : {{ item.description }}
+      <button class="btn btn-danger" ng-click="list.onRemove({index: $index});">Don't want this one!</button>
     </li>
-  </ol>
-</div>
+  </ul>
+  <div class="text-danger" ng-if="list.items.length==0 && list.message">
+    Nothing found
+  </div>

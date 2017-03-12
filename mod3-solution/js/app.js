@@ -11,16 +11,14 @@ function FoundItems() {
   var ddo = {
     templateUrl: 'foundItems.html',
     scope: {
-      foundItems: '<',
-      myTitle: '@title',
+      items: '<',
+      message: '<',
       onRemove: '&'
     },
     controller: NarrowDownDirectiveController,
     controllerAs: 'list',
-    bindToController: true,
     bindToController: true
   };
-
   return ddo;
 }
 
@@ -31,34 +29,31 @@ function NarrowDownDirectiveController() {
 NarrowItDownController.$inject = ['MenuSearchService'];
 function NarrowItDownController(MenuSearchService) {
   var list = this;
+  list.showMessage = false;
   list.searchTerm = '';
   list.foundItems = [];
 
   list.removeItem = function (itemIndex) {
-    console.log("'this' is: ", this);
-    this.lastRemoved = "Last item removed was " + this.items[itemIndex].name;
-    shoppingList.removeItem(itemIndex);
-    this.title = origTitle + " (" + list.items.length + " items )";
+    MenuSearchService.removeItem(itemIndex);
   };
 
   list.getMatchedItems = function(searchTerm) {
-    if (searchTerm)
-      MenuSearchService.getMatchedMenuItems(searchTerm).then(function(data) {
+    if (searchTerm) {
+        MenuSearchService.getMatchedMenuItems(searchTerm).then(function(data) {
         list.foundItems = data;
-        console.log(list.foundItems);
       });
+    }
+    list.showMessage = true;
   };
-
-
-
 }
 
 MenuSearchService.$inject = ['$http', 'ApiBasePath']
 function MenuSearchService($http, ApiBasePath) {
   var menuSearch = this;
+  var foundItems = [];
 
   menuSearch.getMatchedMenuItems = function(searchTerm) {
-    var foundItems = [];
+    foundItems = [];
     return $http({
       method: "GET",
       url: (ApiBasePath + "/menu_items.json")
@@ -73,6 +68,10 @@ function MenuSearchService($http, ApiBasePath) {
       return foundItems;
     });
   };
+
+  menuSearch.removeItem = function(itemIndex) {
+    foundItems.splice(itemIndex, 1);
+  }
 }
 
 })();
