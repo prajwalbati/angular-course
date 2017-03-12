@@ -29,7 +29,7 @@ function NarrowDownDirectiveController() {
 NarrowItDownController.$inject = ['MenuSearchService'];
 function NarrowItDownController(MenuSearchService) {
   var list = this;
-  list.showMessage = false;
+  list.showMessage = true;
   list.searchTerm = '';
   list.foundItems = [];
 
@@ -38,12 +38,10 @@ function NarrowItDownController(MenuSearchService) {
   };
 
   list.getMatchedItems = function(searchTerm) {
-    if (searchTerm) {
-        MenuSearchService.getMatchedMenuItems(searchTerm).then(function(data) {
+    MenuSearchService.getMatchedMenuItems(searchTerm).then(function(data) {
         list.foundItems = data;
-      });
-    }
-    list.showMessage = true;
+        list.showMessage = list.foundItems.lenth>0
+    });
   };
 }
 
@@ -54,18 +52,23 @@ function MenuSearchService($http, ApiBasePath) {
 
   menuSearch.getMatchedMenuItems = function(searchTerm) {
     foundItems = [];
+
     return $http({
       method: "GET",
       url: (ApiBasePath + "/menu_items.json")
     }).then(function (result) {
-      var menuItems = result.data.menu_items;
-      for (var i=0; i<menuItems.length; i++) {
-        var description = menuItems[i].description;
-        if (description.indexOf(searchTerm)!==-1) {
-          foundItems.push(menuItems[i]);
+      if (searchTerm) {
+        var menuItems = result.data.menu_items;
+        for (var i=0; i<menuItems.length; i++) {
+          var description = menuItems[i].description;
+          if (description.indexOf(searchTerm)!==-1) {
+            foundItems.push(menuItems[i]);
+          }
         }
+        return foundItems;
+      } else {
+        return foundItems;
       }
-      return foundItems;
     });
   };
 
