@@ -1,18 +1,12 @@
 <!DOCTYPE html>
-<html ng-app='RoutingApp'>
+<html ng-app='MenuApp'>
   <head>
     <meta charset="utf-8">
     <link rel="stylesheet" href="css/styles.css">
-    <title>Intro to ui-router</title>
+    <title>Restaurant Menu !!!</title>
   </head>
   <body>
-    <h1>Intro to ui-router</h1>
-
-    <div class="tabs">
-      <a ui-sref="tab1" ui-sref-active="activeTab">Tab 1</a>
-      <a ui-sref="tab2" ui-sref-active="activeTab">Tab 2</a>
-      <!-- <button ui-sref="tab2">Tab 2</button> -->
-    </div>
+    <h1>Welcome to our restaurant !!!</h1>
 
     <ui-view></ui-view>
 
@@ -21,7 +15,15 @@
     <script src="lib/angular-ui-router.min.js"></script>
 
     <!-- Modules -->
-    <script src="src/app.js"></script>
+    <script src="js/menuapp.module.js"></script>
+    <script src="js/routes.js"></script>
+    <script src="js/data.module.js"></script>
+    <script src="js/menudata.service.js"></script>
+    <script src="js/categories.component.js"></script>
+    <script src="js/items.component.js"></script>
+    <script src="js/categoriesController.js"></script>
+
+
 
   </body>
 </html>
