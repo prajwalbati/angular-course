@@ -1,4 +1,4 @@
 (function() {
   'use strict';
-  var data = angular.module('data', []);
+  angular.module('data', []);
 })();

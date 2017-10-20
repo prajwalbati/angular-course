@@ -1,13 +1,11 @@
 (function() {
   var data = angular.module('data');
 
-  data.component('itemsComponent', {
+  data.component('items', {
     templateUrl: './src/itemsComponent.html',
     controller: '',
     bindings: {
-      prop1: '<',
-      prop2: '@',
-      onAction: '&'
+      items: '<'
     }
   });
 

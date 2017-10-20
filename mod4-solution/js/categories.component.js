@@ -1,14 +1,17 @@
 (function() {
   var data = angular.module('data');
 
-  data.component('categoriesComponent', {
+  data.component('categories', {
     templateUrl: './src/categoriesComponent.html',
-    controller: '',
+    controller: CategoriesComponentController,
     bindings: {
-      prop1: '<',
-      prop2: '@',
-      onAction: '&'
+      categories: '<'
     }
   });
+
+  function CategoriesComponentController() {
+    var $ctrl = this;
+    console.log($ctrl.categories);
+  };
 
 })();
