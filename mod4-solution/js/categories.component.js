@@ -11,7 +11,6 @@
 
   function CategoriesComponentController() {
     var $ctrl = this;
-    console.log($ctrl.categories);
   };
 
 })();
