@@ -1,5 +1,34 @@
 body {
   font-size: 1.2em;
+  margin : 10px 100px;
+  background-color: #AAA;
+}
+
+.mainContent {
+  border: 2px solid rgba(154, 222, 119, 0.82);
+  border-radius: 5px;
+  min-height: 500px;
+  background-color: rgba(132, 191, 145, 0.19);
+  padding: 10px;
+  font-size: 20px;
+}
+
+.mainContent a {
+  color:#6b0e0e;
+}
+
+.mainContent a:hover {
+  color:#555;
+}
+
+ul.categoriesList > li {
+  text-decoration: underline;
+  cursor: pointer;
+  padding:5px;
+}
+
+ul.categoriesList > li:hover {
+  color: #945656;
 }
 
 div.tabs > a, div.tabs > button {
