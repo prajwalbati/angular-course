@@ -6,7 +6,8 @@ angular.module("public")
 
 RegisterController.$inject = [];
 function RegisterController() {
-console.log("this is register controller");
+  var $ctrl = this;
+
 }
 
 
