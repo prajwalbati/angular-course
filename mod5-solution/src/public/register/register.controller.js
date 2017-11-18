@@ -8,6 +8,10 @@ RegisterController.$inject = [];
 function RegisterController() {
   var $ctrl = this;
 
+  $ctrl.submitForm = function() {
+    console.log("Completed form submit");
+  };
+
 }
 
 

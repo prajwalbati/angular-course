@@ -3,36 +3,51 @@
     <div class="form-group">
       <label for="firstName" class="col-sm-3 control-label">First Name</label>
       <div class="col-sm-6">
-        <input type="text" name="firstName" class="form-control" id="firstName" required />
+        <input type="text" ng-model="registerCtrl.user.firstName" name="firstName" class="form-control" id="firstName" placeholder="First Name" required />
+        <span class="error" ng-if="registerForm.firstName.$invalid && registerForm.firstName.$touched">
+          First Name must not be empty
+        </span>
       </div>
     </div>
     <div class="form-group">
       <label for="lastName" class="col-sm-3 control-label">Last Name</label>
       <div class="col-sm-6">
-        <input type="text" name="lastName" class="form-control" id="lastName" required />
+        <input type="text" ng-model="registerCtrl.user.lastName" name="lastName" class="form-control" id="lastName" placeholder="Last Name" required />
+        <span class="error" ng-if="registerForm.lastName.$invalid && registerForm.lastName.$touched">
+          Last Name must not be empty
+        </span>
       </div>
     </div>
     <div class="form-group">
       <label for="email" class="col-sm-3 control-label">Email Address</label>
       <div class="col-sm-6">
-        <input type="email" name="email" class="form-control" id="email" required />
+        <input type="email" ng-model="registerCtrl.user.email" name="email" class="form-control" placeholder="Email Address" id="email" required />
+        <span class="error" ng-if="registerForm.email.$invalid && registerForm.email.$touched">
+          Must be a valid email address: abc@example.com format
+        </span>
       </div>
     </div>
     <div class="form-group">
       <label for="phone" class="col-sm-3 control-label">Phone Number</label>
       <div class="col-sm-6">
-        <input type="number" name="phone" class="form-control" id="phone" required />
+        <input class="form-control" type="text" name="phone" placeholder="Phone Number ###-###-####" ng-model="registerForm.user.phone" pattern="(\d{3})-(\d{3})-(\d{4})" required>
+        <span class="error" ng-if="registerForm.phone.$invalid && registerForm.phone.$touched">
+          Phone must be in the format ###-###-####.
+        </span>
       </div>
     </div>
     <div class="form-group">
       <label for="menuNumber" class="col-sm-3 control-label">Menu Num of your favorite dish</label>
       <div class="col-sm-6">
-        <input type="text" name="menuNumber" class="form-control" id="menuNumber" required />
+        <input type="text" ng-model="registerCtrl.user.menuNumber" name="menuNumber" class="form-control" id="menuNumber" placeholder="Your favorite dish" required />
+        <span class="error" ng-if="registerForm.menuNumber.$invalid && registerForm.menuNumber.$touched">
+          Enter your menu first
+        </span>
       </div>
     </div>
     <div class="form-group">
       <div class="col-sm-offset-3 col-sm-4">
-        <button type="submit" class="btn btn-primary">Sign Up</button>
+        <button ng-disabled="registerForm.$invalid" ng-click="registerCtrl.submitForm()" class="btn btn-primary">Sign Up</button>
       </div>
     </div>
   </form>
