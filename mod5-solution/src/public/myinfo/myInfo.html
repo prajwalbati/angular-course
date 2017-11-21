@@ -1,1 +1,11 @@
-<div ng-init="ctrl.init()">Your info here</div>
+<div class="container" ng-init="ctrl.init()">
+  <div ng-if="!ctrl.signedUp">Not Signed Up Yet. <a ui-sref="public.register">Sign up Now!</a></div>
+  <div ng-if="ctrl.signedUp">
+    <p>Your first name : {{ctrl.user.firstName}}</p>
+    <p>Your last name : {{ctrl.user.lastName}}</p>
+    <p>Your email : {{ctrl.user.email}}</p>
+    <p>Your phone : {{ctrl.user.phone}}</p>
+    <p>Your favorite dish : {{ctrl.user.menuNumber}}</p>
+
+  </div>
+</div>

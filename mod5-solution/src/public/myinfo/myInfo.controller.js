@@ -9,8 +9,8 @@ function MyInfoController(MenuService) {
   var $ctrl = this;
 
   $ctrl.init = function() {
-    var data = MenuService.getUserData();
-    console.log(data);
+    $ctrl.user = MenuService.getUserData();
+    $ctrl.signedUp = $ctrl.user && $ctrl.user.firstName;
   };
 
 }
