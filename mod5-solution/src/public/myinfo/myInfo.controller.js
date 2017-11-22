@@ -10,6 +10,7 @@ function MyInfoController(MenuService) {
 
   $ctrl.init = function() {
     $ctrl.user = MenuService.getUserData();
+    $ctrl.menuItems = $ctrl.user.items;
     $ctrl.signedUp = $ctrl.user && $ctrl.user.firstName;
   };
 

@@ -6,6 +6,10 @@
     <p>Your email : {{ctrl.user.email}}</p>
     <p>Your phone : {{ctrl.user.phone}}</p>
     <p>Your favorite dish : {{ctrl.user.menuNumber}}</p>
-
+    <br>
+    <p>Items in your favorite menu:</p>
+    <menu-item ng-repeat="menuItem in ctrl.menuItems.menu_items"
+             menu-item="menuItem">
+  </menu-item>
   </div>
 </div>

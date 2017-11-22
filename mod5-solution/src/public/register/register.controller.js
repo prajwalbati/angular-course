@@ -14,6 +14,7 @@ function RegisterController(MenuService) {
       $ctrl.invalidMenu = items["menu_items"].length<1;
       if (!$ctrl.invalidMenu) {
         var userData = $ctrl.user;
+        userData.items = items;
         MenuService.saveUserData(userData);
         $ctrl.submitComplete = "Your information has been saved";
       }
